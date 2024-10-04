@@ -24,8 +24,8 @@ onMounted(() => {
       v-if="isDark"
       src="@/assets/svg/light.svg"
       alt="Light mode"
-      class="h-6 w-6"
+      class="h-5 w-5"
     />
-    <img v-else src="@/assets/svg/dark.svg" alt="Dark mode" class="h-6 w-6" />
+    <img v-else src="@/assets/svg/dark.svg" alt="Dark mode" class="h-5 w-5" />
   </button>
 </template>

@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  vue-color-kit:
+    specifier: ^1.0.6
+    version: 1.0.6(vue@3.4.23)
   vue3-toastify:
     specifier: ^0.2.1
     version: 0.2.1(vue@3.4.23)
@@ -7481,6 +7484,14 @@ packages:
     dependencies:
       ufo: 1.5.3
     dev: true
+
+  /vue-color-kit@1.0.6(vue@3.4.23):
+    resolution: {integrity: sha512-56oSUp8hGIZ3E4ayZLqTDAb2C7VzaWAC1EVUsZEvPCD2wiiiFd2L2BiEGN1ingfz538sYWKNXxMZQGslqbMiBg==}
+    peerDependencies:
+      vue: ^3.0.5
+    dependencies:
+      vue: 3.4.23
+    dev: false
 
   /vue-demi@0.14.7(vue@3.4.23):
     resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}

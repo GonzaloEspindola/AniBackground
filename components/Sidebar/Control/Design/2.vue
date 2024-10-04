@@ -1,20 +1,31 @@
 <script setup lang="ts">
 const { controls } = inject('controls')
 
+const getRandomHue = () => (Math.random() * 360).toFixed(2)
 const getRandomDuration = () => (Math.random() * (15 - 7) + 7).toFixed(2)
 const getRandomDelay = () => (Math.random() * (10 - 4) + 4).toFixed(2)
-const getRandomX = () => (Math.random() * 5).toFixed(2)
-const getRandomY = () => (Math.random() * 10).toFixed(2)
-const getRandomScale = () => (Math.random() * 0.1).toFixed(2)
 
 const getStyle = () => {
   return {
-    '--duration': `${getRandomDuration()}`,
-    '--delay': `${getRandomDelay()}`,
-    '--x': getRandomX(),
-    '--y': getRandomY(),
-    '--scale': getRandomScale(),
+    '--hue': getRandomHue(),
+    '--duration': getRandomDuration(),
+    '--delay': getRandomDelay(),
+    background: `linear-gradient(180deg, ${hexColorToRgba(controls.colors.value.colors[0].color, controls.colors.value.colors[0].transparency)} 0%, ${hexColorToRgba(controls.colors.value.colors[0].color, controls.colors.value.colors[0].transparency)} 40%, ${hexColorToRgba(controls.colors.value.colors[1].color, controls.colors.value.colors[1].transparency)} 60%, ${hexColorToRgba(controls.colors.value.colors[2].color, controls.colors.value.colors[2].transparency)} 100%)`,
   }
+}
+
+const hexColorToRgba = (hex: string, alpha: number) => {
+  hex = hex.replace(/^#/, '')
+  if (hex.length === 3) {
+    hex = hex
+      .split('')
+      .map((char) => char + char)
+      .join('')
+  }
+  const r = parseInt(hex.slice(0, 2), 16)
+  const g = parseInt(hex.slice(2, 4), 16)
+  const b = parseInt(hex.slice(4, 6), 16)
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
 </script>
 
@@ -22,45 +33,16 @@ const getStyle = () => {
   <div class="scene">
     <div class="light-beams">
       <div
+        v-for="index in controls.count.value"
+        :key="index"
         class="light-beam"
-        style="--hue: 255; --duration: 12; --delay: 0"
-      ></div>
-      <div
-        class="light-beam"
-        style="--hue: 200; --duration: 10; --delay: 4"
-      ></div>
-      <div
-        class="light-beam"
-        style="--hue: 290; --duration: 15; --delay: 6"
-      ></div>
-      <div
-        class="light-beam"
-        style="--hue: 220; --duration: 8; --delay: 3"
-      ></div>
-      <div
-        class="light-beam"
-        style="--hue: 180; --duration: 18; --delay: 2"
+        :style="getStyle()"
       ></div>
     </div>
   </div>
 </template>
 
 <style>
-:root {
-  --hue-1: 255;
-  --hue-2: 200;
-  --hue-3: 290;
-  --alpha-1: 0.3;
-  --alpha-2: 0.6;
-  --alpha-3: 0.4;
-}
-
-body {
-  margin: 0;
-  overflow: hidden;
-  background: #000;
-}
-
 .scene {
   height: 100vh;
   width: 100vw;
@@ -78,13 +60,6 @@ body {
 
 .light-beam {
   flex: 1;
-  background: linear-gradient(
-    180deg,
-    hsla(var(--hue), 100%, 50%, 0) 0%,
-    hsla(var(--hue), 100%, 50%, var(--alpha-1)) 40%,
-    hsla(var(--hue), 100%, 50%, var(--alpha-2)) 60%,
-    hsla(var(--hue), 100%, 50%, var(--alpha-3)) 100%
-  );
   background-size: 100% 200%;
   animation: moveBeam calc(var(--duration) * 1s) calc(var(--delay) * -1s)
     infinite ease-in-out;

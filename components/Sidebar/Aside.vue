@@ -7,10 +7,12 @@
     <SidebarHeader />
 
     <article
-      class="flex flex-col p-2 px-4 rounded-md grow gap-4 bg-[#f0f0f0] shadow-md dark:bg-[#1c1c1e]"
+      class="flex flex-col p-2 px-4 rounded-md grow bg-[#f0f0f0] shadow-md divide-y-[1px] divide-gray-600 dark:bg-[#1c1c1e]"
     >
       <SidebarControlDesignPanel />
       <SidebarControlCountPanel />
+      <SidebarControlColorsPanel />
+      <SidebarCopyPanel />
     </article>
   </aside>
 </template>

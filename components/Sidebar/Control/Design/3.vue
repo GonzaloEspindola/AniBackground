@@ -1,17 +1,56 @@
+<script setup lang="ts">
+const { controls } = inject('controls')
+
+const getRandomSize = () => (Math.random() * 100).toFixed(2)
+const getRandomTop = () => (Math.random() * 100).toFixed(2)
+const getRandomLeft = () => (Math.random() * 100).toFixed(2)
+const getRandomAnimationDuration = () =>
+  (Math.random() * (12 - 8) + 8).toFixed(2)
+const getRandomAnimationDelay = () => (Math.random() - 2 * 3).toFixed(2)
+const getRandomOpacity = () => (Math.random() * 1).toFixed(2)
+
+const hexColorToRgba = (hex: string, alpha: number) => {
+  hex = hex.replace(/^#/, '')
+  if (hex.length === 3) {
+    hex = hex
+      .split('')
+      .map((char) => char + char)
+      .join('')
+  }
+  const r = parseInt(hex.slice(0, 2), 16)
+  const g = parseInt(hex.slice(2, 4), 16)
+  const b = parseInt(hex.slice(4, 6), 16)
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
+
+const getCirclesStyle = () => {
+  const size = getRandomSize()
+  return {
+    width: `${size}px`,
+    height: `${size}px`,
+    top: `${getRandomTop()}%`,
+    left: `${getRandomLeft()}%`,
+    'animation-duration': `${getRandomAnimationDuration()}s`,
+    'animation-delay': `${getRandomAnimationDelay()}s`,
+    'background-color': `${hexColorToRgba(controls.colors.value.colors[0].color, controls.colors.value.colors[0].transparency)}`,
+    opacity: getRandomOpacity(),
+  }
+}
+</script>
+
 <template>
-  <div class="background">
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
+  <div class="scene">
+    <div
+      v-for="index in controls.count.value"
+      :key="index"
+      class="circle"
+      :style="getCirclesStyle()"
+    ></div>
   </div>
 </template>
 
 <style>
-.background {
+.scene {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -20,75 +59,8 @@
 
 .circle {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   animation: float 10s infinite ease-in-out;
-  opacity: 0.6;
-}
-
-.circle:nth-child(1) {
-  width: 80px;
-  height: 80px;
-  top: 20%;
-  left: 10%;
-  animation-duration: 12s;
-  animation-delay: -3s;
-}
-
-.circle:nth-child(2) {
-  width: 40px;
-  height: 40px;
-  top: 50%;
-  left: 30%;
-  animation-duration: 14s;
-  animation-delay: -5s;
-}
-
-.circle:nth-child(3) {
-  width: 60px;
-  height: 60px;
-  top: 70%;
-  left: 20%;
-  animation-duration: 10s;
-  animation-delay: -2s;
-}
-
-.circle:nth-child(4) {
-  width: 100px;
-  height: 100px;
-  top: 30%;
-  left: 70%;
-  animation-duration: 15s;
-  animation-delay: -6s;
-}
-
-.circle:nth-child(5) {
-  width: 50px;
-  height: 50px;
-  top: 80%;
-  left: 50%;
-  animation-duration: 11s;
-  animation-delay: -4s;
-}
-
-.circle:nth-child(6) {
-  width: 70px;
-  height: 70px;
-  top: 40%;
-  left: 80%;
-  animation-duration: 13s;
-  animation-delay: -1s;
-}
-
-.circle:nth-child(7) {
-  width: 90px;
-  height: 90px;
-  top: 60%;
-  left: 60%;
-  animation-duration: 16s;
-  animation-delay: -7s;
 }
 
 @keyframes float {

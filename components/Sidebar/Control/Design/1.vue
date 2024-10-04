@@ -7,6 +7,20 @@ const getRandomX = () => (Math.random() * 5).toFixed(2)
 const getRandomY = () => (Math.random() * 10).toFixed(2)
 const getRandomScale = () => (Math.random() * 0.1).toFixed(2)
 
+const hexColorToRgba = (hex: string, alpha: number) => {
+  hex = hex.replace(/^#/, '')
+  if (hex.length === 3) {
+    hex = hex
+      .split('')
+      .map((char) => char + char)
+      .join('')
+  }
+  const r = parseInt(hex.slice(0, 2), 16)
+  const g = parseInt(hex.slice(2, 4), 16)
+  const b = parseInt(hex.slice(4, 6), 16)
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
+
 const getStyle = () => {
   return {
     '--duration': `${getRandomDuration()}`,
@@ -14,6 +28,7 @@ const getStyle = () => {
     '--x': getRandomX(),
     '--y': getRandomY(),
     '--scale': getRandomScale(),
+    'background-image': `linear-gradient(0deg, transparent, ${hexColorToRgba(controls.colors.value.colors[0].color, controls.colors.value.colors[0].transparency)} 10%, transparent, ${hexColorToRgba(controls.colors.value.colors[1].color, controls.colors.value.colors[1].transparency)} 40%, transparent, ${hexColorToRgba(controls.colors.value.colors[2].color, controls.colors.value.colors[2].transparency)} 60%)`,
   }
 }
 </script>
@@ -31,17 +46,7 @@ const getStyle = () => {
   </div>
 </template>
 
-<style>
-:root {
-  --hue: 220;
-  --hue-1: 286;
-  --hue-2: 183;
-  --hue-3: 191;
-  --alpha-1: 0.2710713367756439;
-  --alpha-2: 0.9518445288519037;
-  --alpha-3: 0.3517331987451342;
-}
-
+<style scoped>
 .scene {
   height: 100vh;
   width: 100vw;
@@ -67,20 +72,8 @@ const getStyle = () => {
 
 .northen-light {
   flex: 1;
-  --color-one: hsla(220, 100%, 50%, 0.271);
-  --color-two: hsla(var(--hue-2), 100%, 50%, 0.2710713367756439);
-  --color-three: hsla(var(--hue-3), 100%, 50%, 0.2710713367756439);
   --up: calc(var(--y, 10) * 2vmax);
   --left: calc(var(--x, 2) * 2vmax);
-  background-image: linear-gradient(
-    0deg,
-    transparent,
-    var(--color-one) 10%,
-    transparent,
-    var(--color-two) 40%,
-    transparent,
-    var(--color-three) 60%
-  );
   background-size: 100% 40vmax;
   background-position: bottom;
   background-repeat: no-repeat;

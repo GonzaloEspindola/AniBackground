@@ -17,8 +17,6 @@ const currentComponent = computed(
 
 <template>
   <main class="flex flex-1">
-    <keep-alive>
-      <component :is="currentComponent" />
-    </keep-alive>
+    <component :is="currentComponent" />
   </main>
 </template>

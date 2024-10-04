@@ -1,39 +1,39 @@
 @font-face {
-    font-family: 'Mona Sans';
-    src: url('~/public/fonts/Mona-Sans.ttf') format('truetype'),
-         url('~/public/fonts/Mona-Sans.woff2') format('woff2');
-  }
+  font-family: 'Mona Sans';
+  src:
+    url('~/public/fonts/Mona-Sans.ttf') format('truetype'),
+    url('~/public/fonts/Mona-Sans.woff2') format('woff2');
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-    scroll-behavior: smooth;
-}
-
-
-*{
-    box-sizing: border-box;
-    position: relative;
-    font-family: 'Mona Sans', sans-serif;
+* {
+  box-sizing: border-box;
+  position: relative;
+  font-family: 'Mona Sans', sans-serif;
+  transition-duration: 0.7s;
 }
 
 body {
-    position: relative;
-    background-color: rgb(8, 8, 8);
-    color: #fff;
-    min-height: 100dvh;
-  }
+  position: relative;
+  background-color: rgb(8, 8, 8);
+  color: #fff;
+  min-height: 100dvh;
+}
 
-h1 , h2, h3, h4 {
-    text-wrap: balance;
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
 }
 
 p {
-    text-wrap: pretty;
+  text-wrap: pretty;
 }
 
 .section-container {
-    padding: 10rem 1.5rem 1.5rem 1.5rem;
+  padding: 10rem 1.5rem 1.5rem 1.5rem;
 }

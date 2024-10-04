@@ -4,7 +4,7 @@ const { controls, updateDesignId } = inject('controls')
 </script>
 
 <template>
-  <section class="flex flex-col gap-2">
+  <section class="flex flex-col gap-2 py-4">
     <p class="text-sm font-medium text-neutral-900 dark:text-neutral-200">
       Diseños
     </p>
