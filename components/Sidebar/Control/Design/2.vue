@@ -42,7 +42,7 @@ const hexColorToRgba = (hex: string, alpha: number) => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .scene {
   height: 100vh;
   width: 100vw;

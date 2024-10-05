@@ -49,7 +49,7 @@ const getCirclesStyle = () => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .scene {
   position: relative;
   width: 100%;

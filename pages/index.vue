@@ -1,7 +1,24 @@
 <script setup lang="ts">
 import SideBarAside from '@/components/Sidebar/Aside.vue'
 
-const colorsCountMap = {
+interface Colors {
+  count: number
+  colors: Color[]
+}
+
+interface Color {
+  id: number
+  color: string
+  transparency: number
+}
+
+interface Controls {
+  designId: Ref<number>
+  count: Ref<number>
+  colors: Ref<Colors>
+}
+
+const colorsCountMap: Record<number, Colors> = {
   1: {
     count: 3,
     colors: [
@@ -54,7 +71,7 @@ const colorsCountMap = {
   },
 }
 
-const controls = {
+const controls: Controls = {
   designId: ref(1),
   count: ref(10),
   colors: ref(colorsCountMap[1]),
