@@ -1,22 +1,6 @@
 <script setup lang="ts">
 import SideBarAside from '@/components/Sidebar/Aside.vue'
-
-interface Colors {
-  count: number
-  colors: Color[]
-}
-
-interface Color {
-  id: number
-  color: string
-  transparency: number
-}
-
-interface Controls {
-  designId: Ref<number>
-  count: Ref<number>
-  colors: Ref<Colors>
-}
+import type { Colors, Controls } from '~/types/types'
 
 const colorsCountMap: Record<number, Colors> = {
   1: {
@@ -101,15 +85,15 @@ const updateDesignId = (newDesignId: number) => {
   }
 }
 
-const updateCount = (newCount: number) => {
+const updateCount = (newCount: number): void => {
   controls.count.value = newCount
 }
 
-const updateColor = (newColor: string, id: number) => {
+const updateColor = (newColor: string, id: number): void => {
   controls.colors.value.colors[id - 1].color = newColor
 }
 
-const updateTransparency = (newTransparency: number, id: number) => {
+const updateTransparency = (newTransparency: number, id: number): void => {
   controls.colors.value.colors[id - 1].transparency = newTransparency / 100
 }
 

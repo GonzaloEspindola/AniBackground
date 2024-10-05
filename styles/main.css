@@ -23,6 +23,10 @@ body {
   min-height: 100dvh;
 }
 
+span {
+  transition-duration: 5ms;
+}
+
 h1,
 h2,
 h3,
