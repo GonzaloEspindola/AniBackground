@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const { controls, updateColor, updateTransparency } = inject('controls')
+import { useControls } from '~/composable/useControls'
+const { controls, updateColor, updateTransparency } = useControls()
 </script>
 
 <template>
@@ -19,7 +20,9 @@ const { controls, updateColor, updateTransparency } = inject('controls')
             type="color"
             name="color"
             class="w-full rounded-md z-20"
-            @change="updateColor($event.target.value, color.id)"
+            @change="
+              updateColor(($event.target as HTMLInputElement).value, color.id)
+            "
             :value="color.color"
             :style="{ opacity: color.transparency }"
           />
@@ -32,7 +35,12 @@ const { controls, updateColor, updateTransparency } = inject('controls')
         <input
           id="default-range"
           type="range"
-          @input="updateTransparency(Number($event.target.value), color.id)"
+          @input="
+            updateTransparency(
+              Number(($event.target as HTMLInputElement).value),
+              color.id,
+            )
+          "
           :value="color.transparency * 100"
           min="0"
           max="100"

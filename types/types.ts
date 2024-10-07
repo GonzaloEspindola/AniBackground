@@ -21,6 +21,10 @@ export interface ControlsProvider {
   updateCount: (newCount: number) => void
   updateColor: (newColor: string, id: number) => void
   updateTransparency: (newTransparency: number, id: number) => void
+  frameworkSelected: Ref<string>
+  stepSelected: Ref<number>
+  updateFrameworkSelected: (framework: string) => void
+  updateStepSelected: (step: number) => void
 }
 
 export interface ModalControls {

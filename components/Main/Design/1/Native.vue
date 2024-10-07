@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { controls } = inject('controls')
+import { useControls } from '~/composable/useControls'
+
+const { controls } = useControls()
 
 const getRandomDuration = () => (Math.random() * (15 - 7) + 7).toFixed(2)
 const getRandomDelay = () => (Math.random() * (10 - 4) + 4).toFixed(2)
@@ -37,24 +39,47 @@ const getStyle = () => {
 </script>
 
 <template>
-  <div
-    class="scene h-screen w-screen left-0 z[1] overflow-hidden absolute top-0"
-  >
-    <div
-      class="w-[200vmax] h-[100vmax] left-2/4 transform -translate-x-[20%] -translate-y-[55%] rotate-[30deg] flex blur-[75px]"
-    >
+  <div class="scene">
+    <div class="northen-lights">
       <div
         v-for="index in controls.count.value"
         :key="index"
-        class="northen-light flex-1 bg-[length:100%_40vmax] bg-bottom bg-no-repeat scale-100"
+        class="northen-light"
         :style="getStyle()"
       ></div>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style>
+.scene {
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.northen-lights,
+.scene {
+  position: absolute;
+  top: 0;
+}
+
+.northen-lights {
+  width: 200vmax;
+  height: 100vmax;
+  left: 50%;
+  transform: translate(-20%, -55%) rotate(30deg);
+  display: flex;
+  filter: blur(75px);
+}
+
 .northen-light {
+  flex: 1;
+  background-size: 100% 40vmax;
+  background-position: bottom;
+  background-repeat: no-repeat;
   animation: shift calc(var(--duration, 2) * 1s) calc(var(--delay, 0) * -1s)
     infinite ease;
 }
@@ -69,18 +94,6 @@ const getStyle = () => {
 @keyframes shift {
   50% {
     transform: translate(0) scale(1);
-  }
-}
-
-@keyframes flicker {
-  0%,
-  50%,
-  to {
-    transform: scale(1);
-  }
-
-  25% {
-    transform: scale(0);
   }
 }
 </style>

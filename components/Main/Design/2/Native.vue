@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { controls } = inject('controls')
+import { useControls } from '~/composable/useControls'
+
+const { controls } = useControls()
 
 const getRandomHue = () => (Math.random() * 360).toFixed(2)
 const getRandomDuration = () => (Math.random() * (15 - 7) + 7).toFixed(2)

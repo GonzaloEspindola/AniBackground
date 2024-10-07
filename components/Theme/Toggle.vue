@@ -20,12 +20,7 @@ onMounted(() => {
 
 <template>
   <button @click="themeToggle" class="flex items-center">
-    <img
-      v-if="isDark"
-      src="@/assets/svg/light.svg"
-      alt="Light mode"
-      class="h-5 w-5"
-    />
-    <img v-else src="@/assets/svg/dark.svg" alt="Dark mode" class="h-5 w-5" />
+    <img v-if="isDark" src="/svg/light.svg" alt="Light mode" class="h-5 w-5" />
+    <img v-else src="/svg/dark.svg" alt="Dark mode" class="h-5 w-5" />
   </button>
 </template>

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { controls, updateCount } = inject('controls')
+import { useControls } from '~/composable/useControls'
+
+const { controls, updateCount } = useControls()
 </script>
 
 <template>
@@ -18,7 +20,7 @@ const { controls, updateCount } = inject('controls')
         id="default-range"
         type="range"
         :value="controls.count.value"
-        @input="updateCount(Number($event.target.value))"
+        @input="updateCount(Number(($event.target as HTMLInputElement).value))"
         min="1"
         max="100"
         class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { getHtmlCode } from '@/utils/htmlUtils'
+import { getJsCode } from '@/utils/jsUtils'
 import { useControls } from '~/composable/useControls'
 
-const { frameworkSelected } = useControls()
+const { controls } = useControls()
 
 watch(
-  frameworkSelected,
+  controls.designId,
   () => {
     nextTick(() => {
-      getHtmlCode()
+      getJsCode(controls.designId.value)
     })
   },
   { immediate: true },
@@ -17,8 +17,8 @@ watch(
 
 <template>
   <SidebarCopyCodeSnippetCodeContainer
-    title="Background.html"
-    extension="html"
+    title="tailwind.config.js"
+    extension="tailwind.config.js"
   />
 </template>
 
@@ -27,11 +27,16 @@ watch(
   display: inline;
 }
 
-.span-decoration {
+.span-bracket {
+  color: #808073;
+  margin-right: 5px;
+}
+
+.span-punctuation {
   color: #808073;
 }
 
-.span-tag {
+.span-identifier {
   color: #2a65b9;
 }
 
@@ -39,7 +44,7 @@ watch(
   color: #62afd4;
 }
 
-.span-attr-value {
+.span-value {
   color: #c94821;
 }
 

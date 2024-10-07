@@ -1,19 +1,11 @@
 <script setup lang="ts">
-import type { ModalControls } from '~/types/types'
+import { useControls } from '~/composable/useControls'
+
+const { frameworkSelected, updateFrameworkSelected } = useControls()
 
 interface Props {
   text: string
 }
-
-const { frameworkSelected, updateFrameworkSelected } = inject<ModalControls>(
-  'modalControls',
-  {
-    frameworkSelected: ref(''),
-    updateFrameworkSelected: () => {},
-    stepSelected: ref(1),
-    updateStepSelected: () => {},
-  },
-)
 
 const props = defineProps<Props>()
 </script>

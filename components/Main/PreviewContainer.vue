@@ -1,18 +1,38 @@
 <script setup lang="ts">
-const { controls } = inject('controls')
-import SidebarControlDesign1 from '@/components/Sidebar/Control/Design/1.vue'
-import SidebarControlDesign2 from '@/components/Sidebar/Control/Design/2.vue'
-import SidebarControlDesign3 from '@/components/Sidebar/Control/Design/3.vue'
+import TailwindCSSDesign1 from '~/components/Main/Design/1/TailwindCSS.vue'
+import NativeDesign1 from '~/components/Main/Design/1/Native.vue'
+import TailwindCSSDesign2 from '~/components/Main/Design/2/TailwindCSS.vue'
+import NativeDesign2 from '~/components/Main/Design/2/Native.vue'
+import TailwindCSSDesign3 from '~/components/Main/Design/3/TailwindCSS.vue'
+import NativeDesign3 from '~/components/Main/Design/3/Native.vue'
+import { useControls } from '~/composable/useControls'
+import { computed } from 'vue'
 
-const designMap = {
-  1: SidebarControlDesign1,
-  2: SidebarControlDesign2,
-  3: SidebarControlDesign3,
+const { controls, frameworkSelected } = useControls()
+
+const designMap: Record<number, any> = {
+  1: {
+    'HTML - CSS': NativeDesign1,
+    TailwindCSS: TailwindCSSDesign1,
+  },
+  2: {
+    'HTML - CSS': NativeDesign2,
+    TailwindCSS: TailwindCSSDesign2,
+  },
+  3: {
+    'HTML - CSS': NativeDesign3,
+    TailwindCSS: TailwindCSSDesign3,
+  },
 }
 
-const currentComponent = computed(
-  () => designMap[controls.designId.value] || null,
-)
+const currentComponent = computed(() => {
+  const selectedDesignId = controls.designId.value
+  const selectedFramework = frameworkSelected.value
+
+  return designMap[selectedDesignId]
+    ? designMap[selectedDesignId][selectedFramework] || null
+    : null
+})
 </script>
 
 <template>

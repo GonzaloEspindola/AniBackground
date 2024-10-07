@@ -1,26 +1,19 @@
 <script setup lang="ts">
-import type { ModalControls, Step } from '~/types/types'
+import { useControls } from '~/composable/useControls'
+import type { Step } from '~/types/types'
 
 interface Props {
   steps: Step[]
 }
 
-const { stepSelected, updateStepSelected } = inject<ModalControls>(
-  'modalControls',
-  {
-    frameworkSelected: ref(''),
-    updateFrameworkSelected: () => {},
-    stepSelected: ref(1),
-    updateStepSelected: () => {},
-  },
-)
+const { stepSelected, updateStepSelected } = useControls()
 
 const props = defineProps<Props>()
 </script>
 
 <template>
   <ol
-    class="items-center w-full space-y-4 sm:flex sm:space-x-8 sm:space-y-0 rtl:space-x-reverse"
+    class="flex justify-center items-center w-full space-y-4 sm:flex sm:space-x-8 sm:space-y-0 rtl:space-x-reverse"
   >
     <li
       v-for="(step, index) in props.steps"

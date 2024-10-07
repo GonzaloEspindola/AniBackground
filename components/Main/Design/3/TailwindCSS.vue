@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { controls } = inject('controls')
+import { useControls } from '~/composable/useControls'
+
+const { controls } = useControls()
 
 const getRandomSize = () => (Math.random() * 100).toFixed(2)
 const getRandomTop = () => (Math.random() * 100).toFixed(2)
@@ -39,37 +41,12 @@ const getCirclesStyle = () => {
 </script>
 
 <template>
-  <div class="scene">
+  <div class="scene relative h-[100vh] w-[100vw] overflow-hidden">
     <div
       v-for="index in controls.count.value"
       :key="index"
-      class="circle"
+      class="absolute rounded-[50%] animate-float"
       :style="getCirclesStyle()"
     ></div>
   </div>
 </template>
-
-<style scoped>
-.scene {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.circle {
-  position: absolute;
-  border-radius: 50%;
-  animation: float 10s infinite ease-in-out;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0) translateX(0);
-  }
-  50% {
-    transform: translateY(-20px) translateX(20px);
-  }
-}
-</style>

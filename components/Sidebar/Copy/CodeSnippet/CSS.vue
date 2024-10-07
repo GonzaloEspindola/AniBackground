@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { getHtmlCode } from '@/utils/htmlUtils'
+import { getCssCode } from '@/utils/cssUtils'
 import { useControls } from '~/composable/useControls'
 
-const { frameworkSelected } = useControls()
+const { controls } = useControls()
 
 watch(
-  frameworkSelected,
+  controls.designId,
   () => {
     nextTick(() => {
-      getHtmlCode()
+      getCssCode(controls.designId.value)
     })
   },
   { immediate: true },
@@ -16,10 +16,7 @@ watch(
 </script>
 
 <template>
-  <SidebarCopyCodeSnippetCodeContainer
-    title="Background.html"
-    extension="html"
-  />
+  <SidebarCopyCodeSnippetCodeContainer title="Style.css" extension="css" />
 </template>
 
 <style>
@@ -27,24 +24,30 @@ watch(
   display: inline;
 }
 
-.span-decoration {
-  color: #808073;
+.span-selector {
+  color: #d19a66;
 }
 
-.span-tag {
-  color: #2a65b9;
+.span-property {
+  color: #98c379;
 }
 
-.span-attr {
-  color: #62afd4;
+.span-semicolon {
+  color: #e8f8ff;
 }
 
-.span-attr-value {
-  color: #c94821;
+.span-value {
+  color: #d19a66;
+  margin-left: 5px;
 }
 
-.span-content {
-  color: #d9d7ce;
+.span-bracket {
+  color: #e8f8ff;
+  margin-left: 5px;
+}
+
+.ident {
+  margin-left: 20px;
 }
 
 #codeCanvas {

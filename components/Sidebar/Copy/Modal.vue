@@ -1,38 +1,9 @@
 <script setup lang="ts">
-import type { ControlsProvider, FrameworkSteps, Step } from '~/types/types'
-const { controls } = inject<ControlsProvider>('controls', {
-  controls: {
-    designId: ref(1),
-    count: ref(10),
-    colors: ref({
-      count: 3,
-      colors: [
-        {
-          id: 1,
-          color: '#c300ff',
-          transparency: 0.2710713367756439,
-        },
-        {
-          id: 2,
-          color: '#00f2ff',
-          transparency: 0.9518445288519037,
-        },
-        {
-          id: 3,
-          color: '#00d0ff',
-          transparency: 0.3517331987451342,
-        },
-      ],
-    }),
-  },
-  updateDesignId: () => {},
-  updateCount: () => {},
-  updateColor: () => {},
-  updateTransparency: () => {},
-})
+import type { FrameworkSteps } from '~/types/types'
+import { useControls } from '~/composable/useControls'
 
-const frameworkSelected: Ref<string> = ref('HTML - CSS')
-const stepSelected: Ref<number> = ref(1)
+const { frameworkSelected } = useControls()
+
 const copyModal: any = ref('copyModal')
 
 const frameworkSteps: FrameworkSteps[] = [
@@ -71,14 +42,6 @@ const stepByFramework = computed(() => {
   )?.steps
 })
 
-const updateFrameworkSelected = (framework: string): void => {
-  frameworkSelected.value = framework
-}
-
-const updateStepSelected = (step: number): void => {
-  stepSelected.value = step
-}
-
 const openModal = () => {
   copyModal.value.showModal()
 }
@@ -86,13 +49,6 @@ const openModal = () => {
 const closeModal = () => {
   copyModal.value.close()
 }
-
-provide('modalControls', {
-  frameworkSelected,
-  updateFrameworkSelected,
-  stepSelected,
-  updateStepSelected,
-})
 </script>
 
 <template>
@@ -106,22 +62,35 @@ provide('modalControls', {
 
   <dialog
     ref="copyModal"
-    class="rounded-lg p-0 overflow-hidden shadow-lg bg-[#dcdcdc] dark:bg-[#1c1c1e]"
+    class="rounded-lg p-0 overflow-hidden shadow-lg bg-[#dcdcdc] w-[50rem] dark:bg-[#1c1c1e]"
   >
     <div
       class="dark:bg-[#111111] text-white px-4 py-2 flex justify-between items-center"
     >
-      <h2 class="text-lg">Copia el código de tu background</h2>
+      <h2 class="text-md">Copia el código de tu background</h2>
       <button @click="closeModal" class="text-white text-2xl font-bold">
         &times;
       </button>
     </div>
 
-    <div class="flex flex-col gap-4 px-4 py-6 cursor-pointer">
-      <SidebarCopyFrameworkSelectorSection />
+    <div class="flex flex-col gap-6 px-4 py-6 cursor-pointer max-h-[40rem]">
+      <Transition name="fade" mode="out-in">
+        <SidebarCopyFrameworkSelectorSection />
+      </Transition>
       <SidebarCopySteps :steps="stepByFramework!" />
 
       <SidebarCopyCodeSnippetContainer />
     </div>
   </dialog>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

@@ -1,4 +1,4 @@
-const design2CSS = `.scene {
+export const design2CSS = `.scene {
   height: 100vh;
   width: 100vw;
   position: relative;

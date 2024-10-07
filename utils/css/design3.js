@@ -1,4 +1,4 @@
-const design3CSS = `.scene {
+export const design3CSS = `.scene {
   position: relative;
   width: 100%;
   height: 100vh;
