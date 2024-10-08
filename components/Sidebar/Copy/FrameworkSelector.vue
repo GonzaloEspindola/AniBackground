@@ -13,13 +13,16 @@ const props = defineProps<Props>()
 <template>
   <div
     @click="updateFrameworkSelected(props.text)"
-    class="group flex flex-col items-center rounded-md border border-neutral-200 p-4 transition-colors duration-100 hover:bg-neutral-100/80 dark:border-neutral-800 dark:hover:bg-neutral-800/20"
+    class="flex flex-col items-center rounded-md border cursor-pointer p-4 transition-colors duration-200 border-light-border dark:border-dark-border hover:border-light-primary dark:hover:border-dark-primary hover:bg-light-primary/10 dark:hover:bg-dark-primary/10"
     :class="{
-      active: props.text === frameworkSelected,
+      'bg-light-primary/10 dark:bg-dark-primary/10 border-light-primary dark:border-dark-primary':
+        props.text === frameworkSelected,
     }"
   >
     <slot />
-    <p class="text-xs text-center text-[#111111] dark:text-neutral-400">
+    <p
+      class="text-xs text-center text-light-textSecondary dark:text-dark-textSecondary"
+    >
       {{ props.text }}
     </p>
   </div>

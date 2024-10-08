@@ -54,7 +54,7 @@ const closeModal = () => {
 <template>
   <button
     id="openModal"
-    class="px-4 py-2 grow text-[#111111] bg-[#dcdcdc] dark:bg-[#111111] dark:text-white rounded-md text-md"
+    class="px-4 py-2 grow rounded-md text-sm text-light-E0E0E0 dark:text-dark-textSecondary bg-light-border dark:bg-dark-border hover:scale-105 transition-transform duration-200"
     @click="openModal"
   >
     Copiar código
@@ -62,35 +62,21 @@ const closeModal = () => {
 
   <dialog
     ref="copyModal"
-    class="rounded-lg p-0 overflow-hidden shadow-lg bg-[#dcdcdc] w-[50rem] dark:bg-[#1c1c1e]"
+    class="rounded-lg p-0 overflow-hidden shadow-lg w-[50rem] bg-light-backgroundSecondary dark:bg-dark-backgroundSecondary"
   >
     <div
-      class="dark:bg-[#111111] text-white px-4 py-2 flex justify-between items-center"
+      class="px-4 py-2 flex justify-between items-center text-light-textPrimary dark:text-dark-textPrimary bg-light-background dark:bg-dark-background"
     >
-      <h2 class="text-md">Copia el código de tu background</h2>
-      <button @click="closeModal" class="text-white text-2xl font-bold">
-        &times;
-      </button>
+      <h2 class="text-md">
+        Selecciona el framework que mejor se adapte a tu proyecto
+      </h2>
+      <button @click="closeModal" class="text-2xl font-bold">&times;</button>
     </div>
 
-    <div class="flex flex-col gap-6 px-4 py-6 cursor-pointer max-h-[40rem]">
-      <Transition name="fade" mode="out-in">
-        <SidebarCopyFrameworkSelectorSection />
-      </Transition>
+    <div class="flex flex-col gap-6 px-4 py-6 max-h-[40rem]">
+      <SidebarCopyFrameworkSelectorSection />
       <SidebarCopySteps :steps="stepByFramework!" />
-
       <SidebarCopyCodeSnippetContainer />
     </div>
   </dialog>
 </template>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

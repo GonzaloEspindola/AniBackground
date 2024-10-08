@@ -7,7 +7,7 @@
     <SidebarHeader />
 
     <article
-      class="flex flex-col p-2 px-4 rounded-md grow bg-[#f0f0f0] shadow-md divide-y-[1px] divide-gray-600 dark:bg-[#1c1c1e]"
+      class="flex flex-col p-2 px-4 rounded-md grow shadow-md divide-y-[1px] bg-light-backgroundSecondary dark:bg-dark-backgroundSecondary divide-light-border dark:divide-dark-border"
     >
       <SidebarControlDesignPanel />
       <SidebarControlCountPanel />

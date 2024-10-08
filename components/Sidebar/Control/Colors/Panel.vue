@@ -5,7 +5,9 @@ const { controls, updateColor, updateTransparency } = useControls()
 
 <template>
   <section class="flex flex-col gap-2 py-4">
-    <p class="text-sm font-medium text-neutral-900 dark:text-neutral-200">
+    <p
+      class="text-sm font-light text-light-textSecondary dark:text-dark-textPrimary"
+    >
       Colores
     </p>
 
@@ -13,7 +15,7 @@ const { controls, updateColor, updateTransparency } = useControls()
       <div
         v-for="color in controls.colors.value.colors"
         :key="color.color"
-        class="bg-[#dcdcdc] dark:bg-[#111111] rounded-md p-2"
+        class="rounded-md p-2 outline-dashed outline-1 outline-light-border dark:outline-dark-border"
       >
         <div class="w-full flex justify-center">
           <input
@@ -29,7 +31,7 @@ const { controls, updateColor, updateTransparency } = useControls()
           <img
             src="@/assets/images/transparent.png"
             alt="Color Picker background"
-            class="h-[40px] w-[95%] rounded-md absolute top-0 opacity-100 z-10 object-contain"
+            class="h-[40px] w-[95%] rounded-md absolute top-0 opacity-[15%] z-10 object-contain"
           />
         </div>
         <input
@@ -44,7 +46,7 @@ const { controls, updateColor, updateTransparency } = useControls()
           :value="color.transparency * 100"
           min="0"
           max="100"
-          class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+          class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-light-border dark:bg-dark-border"
         />
       </div>
     </article>

@@ -7,7 +7,9 @@ const { controls, updateDesignId } = useControls()
 
 <template>
   <section class="flex flex-col gap-2 py-4">
-    <p class="text-sm font-medium text-neutral-900 dark:text-neutral-200">
+    <p
+      class="text-sm font-light text-light-textSecondary dark:text-dark-textPrimary"
+    >
       Diseños
     </p>
 
@@ -20,27 +22,28 @@ const { controls, updateDesignId } = useControls()
       >
         <section
           :class="{
-            active: design.id === controls.designId.value,
+            'outline-light-primary dark:outline-dark-primary':
+              design.id === controls.designId.value,
           }"
-          class="h-[50px] w-full rounded-md outline outline-1 outline-neutral-400 dark:outline-neutral-600"
+          class="h-[50px] w-full rounded-md outline outline-1 outline-light-border dark:outline-dark-border"
         >
           <img
             :src="design.image"
             :alt="design.description"
-            class="object-cover h-full w-full rounded-md"
+            class="object-cover h-full w-full rounded-md shadow-lg hover:opacity-75 transition-opacity duration-200"
           />
         </section>
 
-        <p class="text-xs text-center text-neutral-400">
+        <p
+          class="text-xs text-center text-light-textSecondary dark:text-dark-textSecondary"
+          :class="{
+            'font-medium text-light-primary dark:text-dark-primary':
+              design.id === controls.designId.value,
+          }"
+        >
           {{ design.name }}
         </p>
       </li>
     </ul>
   </section>
 </template>
-
-<style>
-.active {
-  outline: solid 1.5px rgba(255, 255, 255, 1) !important;
-}
-</style>

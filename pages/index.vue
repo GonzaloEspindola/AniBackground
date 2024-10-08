@@ -6,7 +6,9 @@ createControlsProvider()
 </script>
 
 <template>
-  <section class="flex gap-2 min-h-screen bg-[#dcdcdc] dark:bg-[#0d0d0d]">
+  <section
+    class="flex gap-2 min-h-screen bg-light-background dark:bg-dark-background"
+  >
     <SidebarAside />
     <MainPreviewContainer />
   </section>
