@@ -31,7 +31,7 @@ const copyCode = (extension: string) => {
     class="shadow-lg rounded-md max-h-[400px] border-2 border-light-border dark:border-dark-border"
   >
     <div
-      class="flex justify-between items-center rounded-t-md bg-light-background dark:bg-dark-background"
+      class="flex justify-between items-center rounded-t-md bg-light-background/50 dark:bg-dark-background/50"
     >
       <div
         class="flex gap-2 items-center p-2 rounded-tl-md bg-light-backgroundSecondary dark:bg-dark-backgroundSecondary"

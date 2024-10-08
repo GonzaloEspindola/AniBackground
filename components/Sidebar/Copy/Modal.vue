@@ -65,7 +65,7 @@ const closeModal = () => {
     class="rounded-lg p-0 overflow-hidden shadow-lg w-[50rem] bg-light-backgroundSecondary dark:bg-dark-backgroundSecondary"
   >
     <div
-      class="px-4 py-2 flex justify-between items-center text-light-textPrimary dark:text-dark-textPrimary bg-light-background dark:bg-dark-background"
+      class="px-4 py-2 flex justify-between items-center text-light-textPrimary dark:text-dark-textPrimary bg-light-background/50 dark:bg-dark-background/50"
     >
       <h2 class="text-md">
         Selecciona el framework que mejor se adapte a tu proyecto
