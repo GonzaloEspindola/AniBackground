@@ -1,4 +1,30 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import type { Component } from 'vue'
+import SidebarControlDesignPanel from '@/components/Sidebar/Control/Design/Panel.vue'
+import SidebarControlCountPanel from '@/components/Sidebar/Control/Count/Panel.vue'
+import SidebarControlColorsPanel from '@/components/Sidebar/Control/Colors/Panel.vue'
+import { useControls } from '~/composable/useControls'
+
+const { controls } = useControls()
+
+const options: Record<number, Component> = {
+  1: [
+    SidebarControlDesignPanel,
+    SidebarControlCountPanel,
+    SidebarControlColorsPanel,
+  ],
+  2: [
+    SidebarControlDesignPanel,
+    SidebarControlCountPanel,
+    SidebarControlColorsPanel,
+  ],
+  3: [
+    SidebarControlDesignPanel,
+    SidebarControlCountPanel,
+    SidebarControlColorsPanel,
+  ],
+}
+</script>
 
 <template>
   <aside
@@ -7,11 +33,20 @@
     <SidebarHeader />
 
     <article
-      class="flex flex-col p-2 px-4 rounded-md grow shadow-md divide-y-[1px] bg-light-backgroundSecondary dark:bg-dark-backgroundSecondary divide-light-border dark:divide-dark-border"
+      class="flex flex-col rounded-sm grow divide-y-[1px] border border-light-border dark:border-dark-border bg-light-backgroundSecondary dark:bg-dark-backgroundSecondary divide-light-border dark:divide-dark-border"
     >
-      <SidebarControlDesignPanel />
-      <SidebarControlCountPanel />
-      <SidebarControlColorsPanel />
+      <p
+        class="text-sm font-light text-light-textSecondary text-center p-2 dark:text-dark-textPrimary"
+      >
+        Personaliza tu background
+      </p>
+
+      <component
+        v-for="(panel, index) in options[controls.designId.value]"
+        :is="panel"
+        :key="index"
+        :index="index"
+      />
       <SidebarCopyPanel />
     </article>
   </aside>

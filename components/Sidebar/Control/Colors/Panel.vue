@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { useControls } from '~/composable/useControls'
+
 const { controls, updateColor, updateTransparency } = useControls()
+
+interface Props {
+  index: number
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
-  <section class="flex flex-col gap-2 py-4">
-    <p
-      class="text-sm font-light text-light-textSecondary dark:text-dark-textPrimary"
-    >
-      Colores
-    </p>
-
+  <CommonAccordion text="Colores" icon="colors" :index="props.index">
     <article class="flex flex-col gap-4">
       <div
         v-for="color in controls.colors.value.colors"
@@ -50,7 +51,7 @@ const { controls, updateColor, updateTransparency } = useControls()
         />
       </div>
     </article>
-  </section>
+  </CommonAccordion>
 </template>
 
 <style>

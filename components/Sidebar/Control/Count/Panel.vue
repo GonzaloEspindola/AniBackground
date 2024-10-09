@@ -2,16 +2,16 @@
 import { useControls } from '~/composable/useControls'
 
 const { controls, updateCount } = useControls()
+
+interface Props {
+  index: number
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
-  <section class="flex flex-col gap-2 py-4">
-    <p
-      class="text-sm font-light text-light-textSecondary dark:text-dark-textPrimary"
-    >
-      Contador
-    </p>
-
+  <CommonAccordion text="Contador" icon="count" :index="props.index">
     <div class="flex items-center gap-2">
       <label
         for="default-range"
@@ -28,5 +28,5 @@ const { controls, updateCount } = useControls()
         class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-light-border dark:bg-dark-border"
       />
     </div>
-  </section>
+  </CommonAccordion>
 </template>

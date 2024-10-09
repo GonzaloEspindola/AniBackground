@@ -1,8 +1,8 @@
 <template>
   <header
-    class="flex items-center justify-between px-4 py-2 rounded-md bg-light-backgroundSecondary shadow-md dark:bg-dark-backgroundSecondary"
+    class="flex items-center justify-between px-4 py-2 rounded-sm bg-light-backgroundSecondary dark:bg-dark-backgroundSecondary border border-light-border dark:border-dark-border"
   >
-    <a href="/" class="flex items-center gap-2 cursor-pointer hover:sepia">
+    <a href="/" class="flex items-center gap-2 cursor-pointer">
       <picture>
         <img
           src="@/assets/images/logo.png"

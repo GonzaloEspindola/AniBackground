@@ -54,7 +54,7 @@ const closeModal = () => {
 <template>
   <button
     id="openModal"
-    class="px-4 py-2 grow rounded-md text-sm text-light-E0E0E0 dark:text-dark-textSecondary bg-light-border dark:bg-dark-border hover:scale-105 transition-transform duration-200"
+    class="px-4 py-2 grow text-sm text-light-E0E0E0 dark:text-dark-textSecondary bg-light-border dark:bg-dark-border hover:font-bold"
     @click="openModal"
   >
     Copiar código
