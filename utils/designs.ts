@@ -20,7 +20,7 @@ export const designs = [
   {
     id: 4,
     name: 'Diseño 4',
-    image: '/design/3.png',
+    image: '/design/4.png',
     description: 'Diseño 4 de los fondos animados',
   },
 ]
