@@ -3,6 +3,7 @@ import type { Component } from 'vue'
 import SidebarControlDesignPanel from '@/components/Sidebar/Control/Design/Panel.vue'
 import SidebarControlCountPanel from '@/components/Sidebar/Control/Count/Panel.vue'
 import SidebarControlColorsPanel from '@/components/Sidebar/Control/Colors/Panel.vue'
+import SidebarControlDurationPanel from '@/components/Sidebar/Control/Duration/Panel.vue'
 import { useControls } from '~/composable/useControls'
 
 const { controls } = useControls()
@@ -22,6 +23,11 @@ const options: Record<number, Component> = {
     SidebarControlDesignPanel,
     SidebarControlCountPanel,
     SidebarControlColorsPanel,
+  ],
+  4: [
+    SidebarControlDesignPanel,
+    SidebarControlColorsPanel,
+    SidebarControlDurationPanel,
   ],
 }
 </script>

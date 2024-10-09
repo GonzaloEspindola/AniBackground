@@ -5,6 +5,7 @@ export const useControls = () => {
     controls: {
       designId: ref(1),
       count: ref(10),
+      duration: ref(50),
       colors: ref({
         count: 3,
         colors: [
@@ -28,6 +29,7 @@ export const useControls = () => {
     },
     updateDesignId: () => {},
     updateCount: () => {},
+    updateDuration: () => {},
     updateColor: () => {},
     updateTransparency: () => {},
     frameworkSelected: ref('HTML - CSS'),

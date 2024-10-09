@@ -52,17 +52,7 @@ export const createControlsProvider = () => {
         },
       ],
     },
-  }
-
-  const controls: Controls = {
-    designId: ref(1),
-    count: ref(10),
-    colors: ref(colorsCountMap[1]),
-  }
-
-  const updateDesignId = (newDesignId: number) => {
-    controls.designId.value = newDesignId
-    controls.colors.value = colorsCountMap[newDesignId] || {
+    4: {
       count: 3,
       colors: [
         {
@@ -77,15 +67,31 @@ export const createControlsProvider = () => {
         },
         {
           id: 3,
-          color: '#00d0ff',
-          transparency: 0.3517331987451342,
+          color: '#053532',
+          transparency: 0.9518445288519037,
         },
       ],
-    }
+    },
+  }
+
+  const controls: Controls = {
+    designId: ref(1),
+    count: ref(10),
+    duration: ref(50),
+    colors: ref(colorsCountMap[1]),
+  }
+
+  const updateDesignId = (newDesignId: number) => {
+    controls.designId.value = newDesignId
+    controls.colors.value = colorsCountMap[newDesignId]
   }
 
   const updateCount = (newCount: number): void => {
     controls.count.value = newCount
+  }
+
+  const updateDuration = (newDuration: number): void => {
+    controls.duration.value = newDuration
   }
 
   const updateColor = (newColor: string, id: number): void => {
@@ -111,6 +117,7 @@ export const createControlsProvider = () => {
     controls,
     updateDesignId,
     updateCount,
+    updateDuration,
     updateColor,
     updateTransparency,
     frameworkSelected,

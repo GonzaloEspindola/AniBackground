@@ -5,6 +5,8 @@ import TailwindCSSDesign2 from '~/components/Main/Design/2/TailwindCSS.vue'
 import NativeDesign2 from '~/components/Main/Design/2/Native.vue'
 import TailwindCSSDesign3 from '~/components/Main/Design/3/TailwindCSS.vue'
 import NativeDesign3 from '~/components/Main/Design/3/Native.vue'
+import TailwindCSSDesign4 from '~/components/Main/Design/4/TailwindCSS.vue'
+import NativeDesign4 from '~/components/Main/Design/4/Native.vue'
 import { useControls } from '~/composable/useControls'
 import { computed } from 'vue'
 
@@ -22,6 +24,10 @@ const designMap: Record<number, any> = {
   3: {
     'HTML - CSS': NativeDesign3,
     TailwindCSS: TailwindCSSDesign3,
+  },
+  4: {
+    'HTML - CSS': NativeDesign4,
+    TailwindCSS: TailwindCSSDesign4,
   },
 }
 

@@ -12,6 +12,7 @@ export interface Color {
 export interface Controls {
   designId: Ref<number>
   count: Ref<number>
+  duration: Ref<number>
   colors: Ref<Colors>
 }
 
@@ -19,6 +20,7 @@ export interface ControlsProvider {
   controls: Controls
   updateDesignId: (newDesignId: number) => void
   updateCount: (newCount: number) => void
+  updateDuration: (newDuration: number) => void
   updateColor: (newColor: string, id: number) => void
   updateTransparency: (newTransparency: number, id: number) => void
   frameworkSelected: Ref<string>

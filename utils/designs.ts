@@ -17,4 +17,10 @@ export const designs = [
     image: '/design/3.png',
     description: 'Diseño 3 de los fondos animados',
   },
+  {
+    id: 4,
+    name: 'Diseño 4',
+    image: '/design/3.png',
+    description: 'Diseño 4 de los fondos animados',
+  },
 ]

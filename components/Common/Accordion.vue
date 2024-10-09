@@ -2,6 +2,7 @@
 import SVGDesign from '@/components/SVG/Design.vue'
 import SVGCount from '@/components/SVG/Count.vue'
 import SVGColors from '@/components/SVG/Colors.vue'
+import Duration from '~/components/SVG/Duration.vue'
 import type { Component } from 'vue'
 
 interface Props {
@@ -16,6 +17,7 @@ const currentSVG: Record<string, Component> = {
   design: SVGDesign,
   count: SVGCount,
   colors: SVGColors,
+  duration: Duration,
 }
 
 const toggleAccordion = (index: number) => {
