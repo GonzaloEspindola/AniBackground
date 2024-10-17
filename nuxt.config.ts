@@ -14,7 +14,7 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
       meta: [
         {
-          property: 'google-site-verification',
+          name: 'google-site-verification',
           content: 'kWEdRPzLf8owgliBWrA2EkB8Ra6ZAYTrucZz45dlc2g',
         },
         { property: 'og:title', content: 'AniBackground' },
