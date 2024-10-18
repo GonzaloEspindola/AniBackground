@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { getHtmlCode } from '@/utils/htmlUtils'
+import { createHtmlStructure } from '~/utils/htmlFormatter'
 import { useControls } from '~/composable/useControls'
 
 const { frameworkSelected } = useControls()
+
+const contentResult = ref('')
 
 watch(
   frameworkSelected,
   () => {
     nextTick(() => {
-      getHtmlCode()
+      contentResult.value = createHtmlStructure()!
     })
   },
   { immediate: true },
@@ -19,6 +21,7 @@ watch(
   <SidebarCopyCodeSnippetCodeContainer
     title="Background.html"
     extension="html"
+    :content="contentResult"
   />
 </template>
 

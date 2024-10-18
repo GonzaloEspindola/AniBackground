@@ -8,26 +8,22 @@ const designMap: Record<number, string> = {
   3: design3JS,
 }
 
-export const getJsCode = (design: number) => {
+export const createJsStructure = (design: number) => {
   const codeCanvas = document.getElementById('codeCanvas')
 
   if (codeCanvas) {
     codeCanvas.innerHTML = ''
   }
 
-  const cssCode = designMap[design]
-  navigator.clipboard
-    .writeText(cssCode)
-    .then(() => {
-      if (codeCanvas) {
-        formatJSAsSpans(cssCode).forEach((span) => {
-          codeCanvas.appendChild(span)
-        })
-      }
+  const jsCode = designMap[design]
+
+  if (codeCanvas) {
+    formatJSAsSpans(jsCode).forEach((span) => {
+      codeCanvas.appendChild(span)
     })
-    .catch((err) => {
-      console.error('Error al copiar el CSS:', err)
-    })
+  }
+
+  return jsCode
 }
 
 const splitJsToken = (token: string) => {

@@ -2,52 +2,57 @@
 import type { FrameworkSteps } from '~/types/types'
 import { useControls } from '~/composable/useControls'
 
-const { frameworkSelected } = useControls()
+const { frameworkSelected, controls } = useControls()
 
-const copyModal: any = ref('copyModal')
+const copyModal = ref<HTMLDialogElement | null>(null)
 
-const frameworkSteps: FrameworkSteps[] = [
+const withAnimation = [
+  { title: 'Paso 1', description: 'Copiar el HTML' },
+  { title: 'Paso 2', description: 'Agregar animación a configuración' },
+]
+
+const withoutAnimation = [{ title: 'Paso 1', description: 'Copiar el HTML' }]
+
+const stepByDesignMap: Record<
+  number,
+  { title: string; description: string }[]
+> = {
+  1: withAnimation,
+  2: withAnimation,
+  3: withAnimation,
+  4: withoutAnimation,
+}
+
+const frameworkSteps = computed<FrameworkSteps[]>(() => [
   {
     framework: 'HTML - CSS',
     steps: [
-      {
-        title: 'Paso 1',
-        description: 'Copiar el HTML',
-      },
-      {
-        title: 'Paso 2',
-        description: 'Copiar el CSS',
-      },
+      { title: 'Paso 1', description: 'Copiar el HTML' },
+      { title: 'Paso 2', description: 'Copiar el CSS' },
     ],
   },
-
   {
     framework: 'TailwindCSS',
-    steps: [
-      {
-        title: 'Paso 1',
-        description: 'Copiar el HTML',
-      },
-      {
-        title: 'Paso 2',
-        description: 'Agregar animación a configuración',
-      },
-    ],
+    steps: stepByDesignMap[controls.designId.value],
   },
-]
+])
 
 const stepByFramework = computed(() => {
-  return frameworkSteps.find(
+  return frameworkSteps.value.find(
     (framework) => framework.framework === frameworkSelected.value,
   )?.steps
 })
 
 const openModal = () => {
-  copyModal.value.showModal()
+  if (copyModal.value) {
+    copyModal.value.showModal()
+  }
 }
 
 const closeModal = () => {
-  copyModal.value.close()
+  if (copyModal.value) {
+    copyModal.value.close()
+  }
 }
 </script>
 
@@ -75,7 +80,7 @@ const closeModal = () => {
 
     <div class="flex flex-col gap-6 px-4 py-6 max-h-[40rem]">
       <SidebarCopyFrameworkSelectorSection />
-      <SidebarCopySteps :steps="stepByFramework!" />
+      <SidebarCopySteps v-if="stepByFramework" :steps="stepByFramework" />
       <SidebarCopyCodeSnippetContainer />
     </div>
   </dialog>

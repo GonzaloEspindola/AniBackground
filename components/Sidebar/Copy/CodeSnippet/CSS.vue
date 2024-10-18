@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { getCssCode } from '@/utils/cssUtils'
+import { createCssStructure } from '~/utils/cssFormatter'
 import { useControls } from '~/composable/useControls'
 
 const { controls } = useControls()
 
+const contentResult = ref('')
+
 watch(
   controls.designId,
   () => {
-    nextTick(() => {
-      getCssCode(controls.designId.value)
+    nextTick(async () => {
+      contentResult.value = await createCssStructure(controls.designId.value)
     })
   },
   { immediate: true },
@@ -16,7 +18,11 @@ watch(
 </script>
 
 <template>
-  <SidebarCopyCodeSnippetCodeContainer title="Style.css" extension="css" />
+  <SidebarCopyCodeSnippetCodeContainer
+    title="Style.css"
+    extension="css"
+    :content="contentResult"
+  />
 </template>
 
 <style>

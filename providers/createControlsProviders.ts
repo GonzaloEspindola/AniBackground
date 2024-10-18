@@ -107,6 +107,7 @@ export const createControlsProvider = () => {
 
   const updateFrameworkSelected = (framework: string): void => {
     frameworkSelected.value = framework
+    stepSelected.value = 1
   }
 
   const updateStepSelected = (step: number): void => {

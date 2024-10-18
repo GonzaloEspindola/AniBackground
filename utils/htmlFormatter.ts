@@ -1,4 +1,4 @@
-export const getHtmlCode = () => {
+export const createHtmlStructure = () => {
   const codeCanvas = document.getElementById('codeCanvas')
 
   if (codeCanvas) {
@@ -6,20 +6,19 @@ export const getHtmlCode = () => {
   }
 
   const backgroundElement = document.querySelector('.scene')
+
   if (backgroundElement) {
     const backgroundHTML = backgroundElement.outerHTML
-    navigator.clipboard
-      .writeText(backgroundHTML)
-      .then(() => {
-        if (codeCanvas) {
-          formatHTMLAsSpans(backgroundHTML).forEach((span) => {
-            codeCanvas.appendChild(span)
-          })
-        }
-      })
-      .catch((err) => {
-        console.error('Error al copiar el HTML:', err)
-      })
+
+    if (backgroundHTML) {
+      if (codeCanvas) {
+        formatHTMLAsSpans(backgroundHTML).forEach((span) => {
+          codeCanvas.appendChild(span)
+        })
+      }
+
+      return backgroundHTML
+    }
   }
 }
 

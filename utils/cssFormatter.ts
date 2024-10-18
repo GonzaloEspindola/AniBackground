@@ -1,33 +1,21 @@
-import { design1CSS } from './css/design1'
-import { design2CSS } from './css/design2'
-import { design3CSS } from './css/design3'
-
-const designMap: Record<number, string> = {
-  1: design1CSS,
-  2: design2CSS,
-  3: design3CSS,
-}
-
-export const getCssCode = (design: number) => {
+export const createCssStructure = async (design: number) => {
   const codeCanvas = document.getElementById('codeCanvas')
 
   if (codeCanvas) {
     codeCanvas.innerHTML = ''
   }
 
-  const cssCode = designMap[design]
-  navigator.clipboard
-    .writeText(cssCode)
-    .then(() => {
-      if (codeCanvas) {
-        formatCSSAsSpans(cssCode).forEach((span) => {
-          codeCanvas.appendChild(span)
-        })
-      }
+  const cssCode = await fetch(`/design/${design}/styles.css`).then((res) =>
+    res.text(),
+  )
+
+  if (codeCanvas) {
+    formatCSSAsSpans(cssCode).forEach((span) => {
+      codeCanvas.appendChild(span)
     })
-    .catch((err) => {
-      console.error('Error al copiar el CSS:', err)
-    })
+  }
+
+  return cssCode
 }
 
 const splitCssToken = (token: string) => {

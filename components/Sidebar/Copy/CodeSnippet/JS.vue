@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { getJsCode } from '@/utils/jsUtils'
+import { createJsStructure } from '~/utils/jsFormatter'
 import { useControls } from '~/composable/useControls'
 
 const { controls } = useControls()
+
+const contentResult = ref('')
 
 watch(
   controls.designId,
   () => {
     nextTick(() => {
-      getJsCode(controls.designId.value)
+      contentResult.value = createJsStructure(controls.designId.value)
     })
   },
   { immediate: true },
@@ -19,6 +21,7 @@ watch(
   <SidebarCopyCodeSnippetCodeContainer
     title="tailwind.config.js"
     extension="tailwind.config.js"
+    :content="contentResult"
   />
 </template>
 

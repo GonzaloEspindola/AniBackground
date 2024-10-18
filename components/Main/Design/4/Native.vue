@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useControls } from '~/composable/useControls'
+import '~/public/design/4/styles.css'
 const { controls } = useControls()
 </script>
 
@@ -93,13 +94,3 @@ const { controls } = useControls()
     </svg>
   </div>
 </template>
-
-<style scoped>
-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-</style>

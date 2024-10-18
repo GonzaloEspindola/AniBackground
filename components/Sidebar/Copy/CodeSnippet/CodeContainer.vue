@@ -1,29 +1,13 @@
 <script setup lang="ts">
-import { useControls } from '~/composable/useControls'
-import {
-  copyBackgroundCSS,
-  copyBackgroundHTML,
-  copyTailwindConfig,
-} from '@/utils/exportCode'
-
-const { controls } = useControls()
+import { copyCode } from '@/utils/exportCode'
 
 interface Props {
   title: string
   extension: string
+  content: string
 }
 
 const props = defineProps<Props>()
-
-const copyCode = (extension: string) => {
-  if (extension === 'html') {
-    copyBackgroundHTML()
-  } else if (extension === 'css') {
-    copyBackgroundCSS(controls.designId.value)
-  } else if (extension === 'tailwind.config.js') {
-    copyTailwindConfig(controls.designId.value)
-  }
-}
 </script>
 
 <template>
@@ -51,7 +35,7 @@ const copyCode = (extension: string) => {
 
       <div
         class="flex gap-2 items-center p-2 rounded-md cursor-pointer hover:scale-105 transition-transform duration-200"
-        @click="copyCode(props.extension)"
+        @click="copyCode(props.content!, props.extension)"
       >
         <h2 class="text-xs text-light-textPrimary dark:text-dark-textPrimary">
           Copiar

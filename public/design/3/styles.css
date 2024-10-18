@@ -1,4 +1,4 @@
-export const design3CSS = `.scene {
+.scene {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -20,4 +20,3 @@ export const design3CSS = `.scene {
     transform: translateY(-20px) translateX(20px);
   }
 }
-`
