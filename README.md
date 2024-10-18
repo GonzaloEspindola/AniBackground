@@ -1,75 +1,16 @@
-# Nuxt 3 Minimal Starter
+# AniBackground 🎨✨
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+AniBackground es una aplicación web que te permite crear fondos de pantalla animados personalizados para tus proyectos o para uso personal. Con AniBackground, puedes elegir entre una variedad de estilos de animación, personalizar los colores, formas y más, todo desde una interfaz amigable y fácil de usar.
 
-## Setup
+## Características 🚀
 
-Make sure to install the dependencies:
+- 🎨 **Personalización de fondo**: Crea backgrounds únicos eligiendo diseños base, colores, etc.
+- 🌐 **Compatible con web**: Genera fondos que se integran perfectamente en cualquier proyecto web.
+- 💾 **Descarga directa**: Copia el codigo directamente en codigo HTML, CSS o incluso la version Tailwind segun tu proyecto lo necesite.
+- ⚙️ **Interfaz fácil de usar**: Personaliza tu fondo con controles intuitivos.
 
-```bash
-# npm
-npm install
+## Web
 
-# pnpm
-pnpm install
+¡Puedes probar AniBackground directamente en la web aquí! [Enlace a la demo](https://ani-background.vercel.app/)
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+![Imagen de Anibackground](https://res.cloudinary.com/ds3dttn8v/image/upload/f_auto,q_auto/v1/portfolio/projects/AniBackground%20Shot)
